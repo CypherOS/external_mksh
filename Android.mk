@@ -92,6 +92,8 @@ LOCAL_CFLAGS += $(MKSH_CFLAGS)
 
 include $(BUILD_EXECUTABLE)
 
+# Guard to prevent overwriting in system
+ifneq ($(TARGET_COPY_OUT_VENDOR),system)
 # /vendor/etc/mkshrc
 include $(CLEAR_VARS)
 
@@ -125,6 +127,7 @@ LOCAL_CFLAGS += \
 LOCAL_CFLAGS += $(MKSH_CFLAGS)
 
 include $(BUILD_EXECUTABLE)
+endif
 
 MKSH_SRC_FILES:=
 MKSH_CFLAGS:=
